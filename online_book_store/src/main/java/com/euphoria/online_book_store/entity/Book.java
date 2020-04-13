@@ -23,6 +23,29 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String sku;
+	private String name;
+	private String description;
+	
+	@Column(name="unit_price")
+	private BigDecimal unitPrice;
+	
+	@Column(name="image_url")
+	private String imageUrl;
+	
+	private boolean active;
+	
+	@Column(name="units_in_stock")
+	private int unitsinStock;
+	
+	@Column(name="date_created")
+	private Date createdOn;
+	
+	@Column(name="last_updated")
+	private Date updatedOn;
+	
+	@ManyToOne
+	@JoinColumn(name="category_id",nullable=false)
+	private BookCategory category;
 	public Long getId() {
 		return id;
 	}
@@ -111,27 +134,5 @@ public class Book {
 		this.category = category;
 	}
 
-	private String name;
-	private String description;
 	
-	@Column(name="unit_price")
-	private BigDecimal unitPrice;
-	
-	@Column(name="image_url")
-	private String imageUrl;
-	
-	private boolean active;
-	
-	@Column(name="units_in_stock")
-	private int unitsinStock;
-	
-	@Column(name="date_created")
-	private Date createdOn;
-	
-	@Column(name="last_updated")
-	private Date updatedOn;
-	
-	@ManyToOne
-	@JoinColumn(name="category_id",nullable=false)
-	private BookCategory category;
 }
